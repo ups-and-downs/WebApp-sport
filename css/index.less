@@ -1,0 +1,332 @@
+@import (reference) "public";
+html {
+    font-size: 100px;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    color: extract(@cL, 1);
+    background: extract(@cL, 3);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a,
+a:active,
+a:visited,
+a:hover,
+a:target {
+    display: block;
+    color: extract(@cL, 1);
+}
+
+.main {
+    margin: 0 auto;
+    max-width: 6.4rem;
+}
+
+// --header--
+.header {
+    .con {
+        height: .88rem;
+        line-height: .88rem;
+        background: extract(@cL, 5);
+        color: extract(@cL, 4);
+        font-size: .32rem;
+        .logo,
+        .type {
+            float: left;
+        }
+        .login,
+        .menu {
+            float: right;
+        }
+        .logo {
+            font-weight: normal;
+            padding-left: .8rem;
+            width: 1.44rem;
+            background: url("@{url}/icon-logo.png") no-repeat .2rem center;
+            background-size: .48rem;
+            border-right: .02rem solid #066dc4;
+            a {
+                border-right: .02rem solid #61b2f6;
+                color: extract(@cL, 4);
+            }
+        }
+        .type {
+            padding: 0 .2rem;
+        }
+        .login {
+            padding: 0 .3rem;
+        }
+        .menu {
+            width: .88rem;
+            height: .88rem;
+            background: url("@{url}/btn-nav.png") no-repeat center;
+            background-size: 50%;
+        }
+    }
+    .nav {
+        //当点击导航按钮时nav才显示，所以开始的时候height和padding都写成0，然后用动画把height和padding值变出来
+        height: 0; // 2.22rem
+        padding: 0; // .1rem 0
+        font-size: .32rem;
+        overflow: hidden;
+        font-family: "寰蒋闆呴粦", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background: #fff;
+        .transition (@duration: .3s);
+        a {
+            float: left;
+            height: .74rem;
+            width: 16%;
+            line-height: .74rem;
+            text-align: center; // 表示以6个为一组，即6个一行，让第一列的三个元素占据2%的位置，这样和6个16%就能占满整个nav
+            &:nth-child(6n+1) {
+                margin-left: 2%;
+            }
+        }
+    }
+}
+
+// --video--
+.videoArea {
+    height: 3.6rem;
+    background: rgba(0, 0, 0, 1);
+    video {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// --match info--
+.matchInfo {
+    box-sizing: border-box;
+    background: extract(@cL, 4);
+    padding: .3rem;
+    height: 2.04rem;
+    overflow: hidden;
+    font-family: "寰蒋闆呴粦", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .top {
+        height: .6rem;
+        line-height: .6rem;
+        .home,
+        .away {
+            float: left;
+            width: 34%;
+            img {
+                display: inline-block;
+                width: .64rem;
+                height: .6rem;
+                vertical-align: top;
+            }
+            span {
+                display: inline-block;
+                font-size: .4rem;
+                vertical-align: top;
+            }
+        }
+        .home {
+            span {
+                padding-left: .24rem;
+            }
+        }
+        .away {
+            text-align: right;
+            span {
+                padding-right: .24rem;
+            }
+        }
+        .time {
+            float: left;
+            width: 32%;
+            font-size: .24rem;
+            color: extract(@cL, 2);
+            text-align: center;
+        }
+    }
+    .middle {
+        height: .04rem;
+        background: extract(@cL, 5);
+        margin: .2rem 0;
+        position: relative;
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0; //设置动画效果
+            height: .04rem;
+            background: extract(@cL, 6);
+            .transition (@duration: .5s) {}
+            ;
+        }
+    }
+    .bottom {
+        height: .4rem; // span {
+        //     float: left;
+        //     width: 34%;
+        //     font-size: .12rem;
+        //     color: extract(@cL, 2);
+        //     text-align: center;
+        // }
+        .home {
+            position: relative;
+            a {
+                background: url('@{url}/support-left.png') no-repeat center center;
+                background-size: .24rem;
+                display: block;
+                width: .4rem;
+                height: .4rem;
+                position: absolute;
+                top: 0;
+                left: 0;
+                &.bg {
+                    background: url('@{url}/support-red.png') no-repeat center center;
+                    background-size: .24rem;
+                    span {
+                        color: extract(@cL, 6);
+                    }
+                }
+            }
+            span {
+                position: absolute;
+                display: block;
+                left: .5rem;
+                top: .06rem;
+                font-size: .12rem;
+                color: extract(@cL, 2);
+            }
+            p {
+                width: 100%;
+                height: .4rem;
+                float: left;
+                text-align: center;
+                color: #999;
+                font-size: .12rem;
+                font-variant: normal;
+                line-height: .4rem;
+            }
+        }
+        .away {
+            position: relative;
+            a {
+                background: url('@{url}/support-right.png') no-repeat center center;
+                background-size: .24rem;
+                display: block;
+                width: .4rem;
+                height: .4rem;
+                position: absolute;
+                top: 0;
+                right: 0;
+                &.bg {
+                    background: url('@{url}/support-blue.png') no-repeat center center;
+                    background-size: .24rem;
+                    span {
+                        color: extract(@cL, 5);
+                    }
+                }
+            }
+            span {
+                position: absolute;
+                display: block;
+                right: .5rem;
+                top: .06rem;
+                font-size: .12rem;
+                color: extract(@cL, 2);
+            }
+        }
+    }
+}
+
+//--match list--
+.matchList {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .2rem .3rem;
+    overflow: hidden;
+    background: extract(@cL, 4);
+    li {
+        width: 2.2rem;
+        float: left;
+        margin-right: .2rem;
+        overflow: hidden;
+        div {
+            position: relative;
+            width: 100%;
+            height: 1.24rem;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            span {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                padding: .08rem;
+                height: .31rem;
+                background: rgba(0, 0, 0, 0.5);
+                color: extract(@cL, 4);
+                line-height: .31rem;
+                font-size: .24rem;
+                font-family: "寰蒋闆呴粦", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+        }
+        p {
+            font-size: .24rem;
+            line-height: .3rem;
+            padding-top: .1rem;
+        }
+        &.bg {
+            p {
+                color: extract(@cL, 6);
+            }
+        }
+    }
+}
+
+//--match playback--
+.matchPlayback {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .2rem .3rem;
+    overflow: hidden;
+    background: extract(@cL, 4);
+    margin-top: .2rem;
+    li {
+        width: 2.2rem;
+        float: left;
+        margin-right: .2rem;
+        overflow: hidden;
+        div {
+            position: relative;
+            width: 100%;
+            height: 1.24rem;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            span {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                padding: .08rem;
+                height: .31rem;
+                background: rgba(0, 0, 0, 0.5);
+                color: extract(@cL, 4);
+                line-height: .31rem;
+                font-size: .24rem;
+                font-family: "寰蒋闆呴粦", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+        }
+        p {
+            font-size: .24rem;
+            line-height: .3rem;
+            padding-top: .1rem;
+        }
+        &.bg {
+            p {
+                color: extract(@cL, 6);
+            }
+        }
+    }
+}

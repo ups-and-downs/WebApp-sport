@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- less -->
+    <link rel="stylesheet/less" href="css/index.less">
+    <script src="js/less.min.js"></script>
+</head>
+
+<body>
+    <section class="main">
+        <!-- header -->
+        <header class="header">
+            <div class="con">
+                <h1 class="logo">
+                    <a href="javascript:;">体育频道</a>
+                </h1>
+                <span class="type">NBA</span>
+                <span class="menu"></span>
+                <span class="login">登录</span>
+            </div>
+            <nav class="nav">
+                <a href="javascript:;">NBA</a>
+                <a href="javascript:;">CBA</a>
+                <a href="javascript:;">英超</a>
+                <a href="javascript:;">欧冠</a>
+                <a href="javascript:;">亚冠</a>
+                <a href="javascript:;">西甲</a>
+                <a href="javascript:;">意甲</a>
+                <a href="javascript:;">法甲</a>
+                <a href="javascript:;">中超</a>
+                <a href="javascript:;">NFL</a>
+                <a href="javascript:;">综合</a>
+                <a href="javascript:;">欧洲</a>
+                <a href="javascript:;">社区</a>
+                <a href="javascript:;">下载</a>
+            </nav>
+        </header>
+        <!-- video -->
+        <!-- 在video标签中（audio没有），poster属性表示视频的第一张截图，只有当preload="none"才有用 -->
+        <section class="videoArea">
+            <video controls preload="none" poster="img/poster.jpg" src="http://180.96.69.26/sports.tc.qq.com/A7gbv_IZ5JQKbUNdGvkJmwQsEyUUYjoAWYHljHZiN0WI/w0026fhlc86.mp4?vkey=129DFE05A79D9B7317067987087C3A90D46A61878F2BE58BE4683EC601A914B09952FE3A2DE72A9A9FBB5A263230331F85418AF69D52E38B6A3D2C8BCD2D498B8BD05C016994CA95A3D999BE90925169E8963E3EBC56AC40069B20BFA5461D9BED0FD9AC491A04D74AE24A87D276BF5108AE5A5F21D000A1&br=121&platform=2&fmt=auto&level=0&sdtfrom=v3010&guid=40d512db0202c2c6a0a8cac6d85fd4c7"></video>
+        </section>
+
+        <!-- match info -->
+        <section class="matchInfo">
+        </section>
+
+        <!-- match list -->
+        <section class="matchList">
+            <ul class="clear">
+
+            </ul>
+        </section>
+
+        <!-- match playback -->
+        <section class="matchPlayback">
+            <ul class="clear">
+
+            </ul>
+        </section>
+    </section>
+
+    <script src="js/zepto.min.js"></script>
+    <script src="js/touch.min.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script src="js/ejs.min.js"></script>
+
+    <script charset="utf-8" type="text/template" id="matchInfoTemplate">
+        <div class="top">
+            <div class="home">
+                <img src="<%= matchInfo.leftBadge %>">
+                <span>
+                    <%= matchInfo.leftGoal %>
+                </span>
+            </div>
+            <div class="time">
+                <%= matchInfo.startTime.myFormatTime('{1}月{2}日{3}:{4}') %>
+            </div>
+            <div class="away">
+                <span>
+                    <%= matchInfo.rightGoal %>
+                </span>
+                <img src="<%= matchInfo.rightBadge %>">
+            </div>
+        </div>
+        <div class="middle">
+            <span></span>
+        </div>
+        <div class="bottom">
+            <div class="home">
+                <a href="javascript:;" type="1">
+                    <span>
+                        <%= matchInfo.leftSupport %>
+                    </span>
+                </a>
+                <p>
+                    <%= matchInfo.matchDesc %>
+                </p>
+            </div>
+            <div class="away">
+                <a href="javascript:;" type="2">
+                    <span>
+                        <%= matchInfo.rightSupport %>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </script>
+
+    <script charset="utf-8" type="text/template" id="matchListTemplate">
+        <% $.each(matchList,function(index,item){ %>
+            <li class="<%= index == 0 ? 'bg' : '' %>">
+                <div>
+                    <img src="<%= item.pic %>">
+                    <span>
+                        <%= item.duration.slice(item.duration.indexOf(':')+1) %>
+                    </span>
+                </div>
+                <p>
+                    <%= item.title %>
+                </p>
+            </li>
+            <%});%>
+    </script>
+
+    <script charset="utf-8" type="text/template" id="matchPlaybackTemplate">
+        <% $.each(matchPlayback,function(index,item){ %>
+            <li class="<%= index == 0 ? 'bg' : '' %>">
+                <div>
+                    <img src="<%= item.pic %>">
+                    <span>
+                        <%= item.duration.slice(item.duration.indexOf(':')+1) %>
+                    </span>
+                </div>
+                <p>
+                    <%= item.title %>
+                </p>
+            </li>
+            <%});%>
+    </script>
+    <script src="js/webapp.js"></script>
+</body>
+
+</html>
